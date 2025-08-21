@@ -16,7 +16,7 @@ app.add_middleware(
 # Путь к файлам в контейнере (совпадает с nginx)
 FILES_DIR = "/usr/share/nginx/files"
 
-@app.get("/api/getFiles")  # Изменил путь для лучшей практики
+@app.get("/api/getFiles")
 def list_files():
     try:
         # Проверяем существование директории
@@ -25,6 +25,8 @@ def list_files():
             return JSONResponse({"message": "Files directory created", "files": []})
 
         files = os.listdir(FILES_DIR)
+        # Фильтруем файлы: исключаем скрытые файлы (начинающиеся с точки)
+        # и проверяем, что это обычные файлы (не директории)
         file_list = [
             {
                 "name": file,
@@ -32,7 +34,7 @@ def list_files():
                 "size": os.path.getsize(os.path.join(FILES_DIR, file)),
             }
             for file in files
-            if os.path.isfile(os.path.join(FILES_DIR, file))
+            if os.path.isfile(os.path.join(FILES_DIR, file)) and not file.startswith('.')
         ]
         return JSONResponse({"files": file_list})
     
@@ -41,4 +43,4 @@ def list_files():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=5000)  # Стандартный порт для FastAPI
+    uvicorn.run(app, host="0.0.0.0", port=5000)
