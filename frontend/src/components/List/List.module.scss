@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.item {
+    width: 150px;
+    height: 100px;
+    text-align: center;
+}
+
+.name {
+    text-align: center;
+    width: 150px;
+    overflow: hidden;
+    font-size: 25px;
+}

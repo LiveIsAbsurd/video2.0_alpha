@@ -1,0 +1,26 @@
+{
+  "name": "video2.0",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "ant-design-vue": "^4.2.6",
+    "fs": "^0.0.1-security",
+    "idb": "^8.0.3",
+    "openpgp": "^6.2.0",
+    "plyr": "^3.7.8",
+    "sass": "^1.89.2",
+    "vue": "^3.5.17",
+    "vue-plyr": "^7.0.0",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "vite": "^7.0.0"
+  }
+}

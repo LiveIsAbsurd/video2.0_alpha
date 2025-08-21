@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+  
+  backend:
+    build: ./backend
+    volumes:
+      - ./files:/usr/share/nginx/files
+    environment:
+      - FILES_DIR=/usr/share/nginx/files
+    expose:
+      - "5000"
+  
+  nginx:
+    image: nginx
+    volumes:
+      - ./files:/usr/share/nginx/files
+      - ./frontend/dist:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend

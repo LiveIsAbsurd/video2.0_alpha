@@ -1,0 +1,44 @@
+.info {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    
+    top: 40%;
+    left: 40%;
+    font-size: 38px;
+    z-index: 10;
+
+    width: 400px;
+    height: 200px;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+
+    .text {
+        margin: 0 auto;
+        width: fit-content;
+        text-align: center;
+    }
+
+    .spin {
+        text-align: center;
+    }
+
+    .keyInput {
+        display: block;
+        margin: 0 auto;
+        background-color: white;
+        color: black;
+        margin-bottom: 10px;
+    }
+
+    .decryptButton {
+        display: block;
+        margin: 0 auto;
+        background-color: white;
+
+        &:enabled {
+            color: black
+        }
+    }
+}
