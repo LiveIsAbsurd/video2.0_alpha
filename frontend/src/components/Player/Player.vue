@@ -13,7 +13,7 @@
             type: 'video',
                 sources: [{
                     src: newUrl,
-                    type: 'video/mp4' // Или динамически определяйте тип
+                    type: 'video/mp4'
                 }]
             };
         }
