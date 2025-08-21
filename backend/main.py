@@ -13,24 +13,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Путь к файлам в контейнере (совпадает с nginx)
 FILES_DIR = "/usr/share/nginx/files"
 
 @app.get("/api/getFiles")
 def list_files():
     try:
-        # Проверяем существование директории
         if not os.path.exists(FILES_DIR):
             os.makedirs(FILES_DIR, exist_ok=True)
             return JSONResponse({"message": "Files directory created", "files": []})
 
         files = os.listdir(FILES_DIR)
-        # Фильтруем файлы: исключаем скрытые файлы (начинающиеся с точки)
-        # и проверяем, что это обычные файлы (не директории)
         file_list = [
             {
                 "name": file,
-                "url": f"/files/{file}",  # Путь через nginx
+                "url": f"/files/{file}",
                 "size": os.path.getsize(os.path.join(FILES_DIR, file)),
             }
             for file in files
